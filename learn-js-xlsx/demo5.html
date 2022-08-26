@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 20px;
+        }
+        table, td, th {
+            border: 1px solid gray;
+        }
+        td, th {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="exportData()">导出</button>
+    <script>
+            function exportData() {
+                const workbook = XLSX.utils.book_new();
+                let worksheet1 = XLSX.utils.aoa_to_sheet([
+                    ['姓名', '学科',null, null, '总分'],
+                    [null, '语文', '数学', '外语', null],
+                    ['李四', 50, 70, 80 , 200],
+                    ['王五', 60, 90, 70, 210]
+                ])
+                worksheet1['!merges'] = [
+                    XLSX.utils.decode_range("A1:A2"),
+                    XLSX.utils.decode_range("E1:E2"),
+                    XLSX.utils.decode_range("B1:D1"),
+                ]
+
+                XLSX.utils.book_append_sheet(workbook, worksheet1, "sheet1");
+                XLSX.writeFile(workbook, "从DOM表格导出数据.xlsx");
+            }
+    </script>
+</body>
+</html>

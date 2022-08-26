@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 20px;
+        }
+        table, td, th {
+            border: 1px solid gray;
+        }
+        td, th {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="exportData()">导出</button>
+    <script>
+            function exportData() {
+                let row_name = XLSX.utils.encode_row(3);
+                console.log(row_name)
+                let address = XLSX.utils.decode_cell("B3");
+                console.log(address)
+
+                let F4_addr = XLSX.utils.encode_cell({r:3, c:5})
+                console.log(F4_addr)
+
+                let range = XLSX.utils.decode_range("A1:D3");
+                console.log(range)
+
+                // let address = XLSX.utils.decode_cell("A2");
+                // console.log(address)
+            }
+    </script>
+</body>
+</html>

@@ -43,10 +43,11 @@
         </tr>
     </table>
     <script>
-        function exportData() {
-            const wb = XLSX.utils.table_to_book(document.getElementById("tableDataId"));
-            XLSX.writeFile(wb, "从DOM表格导出数据.xlsx");
-        }
+            function exportData() {
+                const wb = XLSX.utils.table_to_book(document.getElementById("tableDataId"));
+
+                XLSX.writeFile(wb, "从DOM表格导出数据.xlsx");
+            }
     </script>
 </body>
 </html>
